@@ -78,6 +78,8 @@ class LeftTabWidget(QWidget):
         # for item
         self.list_widget_of_local_pdf.itemDoubleClicked.connect(self.localListWidgetDBClicked)
         self.list_widget_of_history_pdf.itemDoubleClicked.connect(self.historyListWidgetDBClicked)
+        # 关闭侧边栏
+        self.hideButtonClicked()
 
     def updateButtonClicked(self):
         self._updateHistory()
