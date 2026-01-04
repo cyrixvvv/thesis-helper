@@ -1,5 +1,5 @@
 pyqt5
 requests
 pyqtWebEngine
-googletrans
+googletrans==4.0.0-rc1
 qtawesome
