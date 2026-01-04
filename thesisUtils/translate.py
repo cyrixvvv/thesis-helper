@@ -1,34 +1,11 @@
 import requests, uuid
 from googletrans import Translator, utils
-from googletrans.compat import PY3
+from googletrans import Translator, utils
 from googletrans.constants import DEFAULT_USER_AGENT
 from googletrans import urls
 from thesisUtils.configure import config
 
 # --- 辅助类与函数 ---
-
-class MyTranslator(Translator):
-    """
-    继承 Google Translator 以支持自定义代理和服务地址
-    """
-    def __init__(self, service_urls=None, user_agent=DEFAULT_USER_AGENT,
-                 proxies=None, timeout=None):
-        super().__init__(service_urls, user_agent, proxies, timeout)
-
-    def _translate(self, text, dest, src):
-        if not PY3 and isinstance(text, str):
-            text = text.decode('utf-8')
-
-        token = self.token_acquirer.do(text)
-        params = utils.build_params(query=text, src=src, dest=dest, token=token)
-        params['client'] = 'webapp'
-        
-        # 使用配置的代理
-        url = urls.TRANSLATE.format(host=self._pick_service_url())
-        r = self.session.get(url, params=params, proxies=self.proxies, timeout=10)
-
-        data = utils.format_json(r.text)
-        return data
 
 def get_proxies():
     """从配置文件读取网络代理设置"""
@@ -48,7 +25,8 @@ def _do_google_translate(text_input):
     google_host = config.get('translation', 'google_host', fallback='translate.google.com')
     proxies = get_proxies()
     
-    translator = MyTranslator(service_urls=[google_host], proxies=proxies)
+    # Use standard Translator. googletrans 4.0.0rc1 supports proxies and service_urls properly.
+    translator = Translator(service_urls=[google_host], proxies=proxies)
     
     # 简单的翻译调用，出错会抛出异常由上层捕获
     result = translator.translate(text_input, dest='zh-cn')
