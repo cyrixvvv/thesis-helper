@@ -3,7 +3,7 @@ import os
 import sys
 config = configparser.ConfigParser()
 config_path = os.path.join(os.getcwd(), "CONFIG.ini")
-if sys.platform == "win32":
+try:
     config.read(config_path, encoding="utf-8")
-else:
-    config.read(config_path)
+except UnicodeDecodeError:
+    config.read(config_path, encoding="gb18030")
