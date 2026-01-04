@@ -20,19 +20,19 @@ class LeftTabWidget(QWidget):
         self.main_layout.addWidget(self.left_widget)
         self.button_layout = QVBoxLayout(self.left_widget)
 
-        self.hide_button = QPushButton(qtawesome.icon('fa.circle', color='red'), '')
+        self.hide_button = QPushButton(qtawesome.icon('fa5s.circle', color='red'), '')
         self.button_layout.addWidget(self.hide_button)
 
-        self.update_button = QPushButton(qtawesome.icon('fa.cloud', color='red'), '')
+        self.update_button = QPushButton(qtawesome.icon('fa5s.cloud', color='red'), '')
         self.button_layout.addWidget(self.update_button)
 
-        self.local_pdf = QPushButton(qtawesome.icon('fa.home', color='red'), '')
+        self.local_pdf = QPushButton(qtawesome.icon('fa5s.home', color='red'), '')
         self.button_layout.addWidget(self.local_pdf)
 
-        self.history_pdf = QPushButton(qtawesome.icon('fa.heart', color='red'), '')
+        self.history_pdf = QPushButton(qtawesome.icon('fa5s.heart', color='red'), '')
         self.button_layout.addWidget(self.history_pdf)
 
-        self.pushButton3 = QPushButton(qtawesome.icon('fa.question', color='red'), '')
+        self.pushButton3 = QPushButton(qtawesome.icon('fa5s.question', color='red'), '')
         self.button_layout.addWidget(self.pushButton3)
 
         # stacked_widget as the right widget
