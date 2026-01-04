@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Time    : 2019年11月4日16:56:33
-# @Author  : 穆华岭
+# @Author  : 穆华岭  cyrix 20250104修改
 # @Software: 毕业论文小助手
 # @github    ：https://github.com/muhualing/
 import os
@@ -124,25 +124,25 @@ class MainWindow(QMainWindow):
         self.thread_my = WatchClip()
         self.thread_my.start()
 
-        self.setWindowTitle("毕业论文小助手")
+        self.setWindowTitle("阅读小助手 by cyrix")
         self.translate_ori = QPlainTextEdit()
         # self.translate_ori.setTextBackgroundColor(QColor(127, 127, 127, 60))
         # self.translate_ori.setTextColor(QColor(0, 0, 0, 0))
 
-        self.translate_ori.setStyleSheet("font: 12pt Roboto")
+        self.translate_ori.setStyleSheet("font: 13pt Calibri")
 
         self.translate_res = QPlainTextEdit()
-        self.translate_res.setStyleSheet("font: 12pt Roboto")
+        self.translate_res.setStyleSheet("font: 13pt Calibri")
 
         self.selectable_text_size = ['8','9','10','11','12','13','14','15',]
 
         self.text_size_combobox_ori = QComboBox()
         self.text_size_combobox_ori.addItems(self.selectable_text_size)
-        self.text_size_combobox_ori.setCurrentIndex(4)
+        self.text_size_combobox_ori.setCurrentIndex(7)
 
         self.text_size_combobox_res = QComboBox()
         self.text_size_combobox_res.addItems(self.selectable_text_size)
-        self.text_size_combobox_res.setCurrentIndex(4)
+        self.text_size_combobox_res.setCurrentIndex(5)
 
 
         label1 = QLabel('字体大小:')
@@ -178,7 +178,7 @@ class MainWindow(QMainWindow):
         vbox.addWidget(self.translate_res)
 
         gbox = QGroupBox()
-        gbox.setStyleSheet("font: 12pt Roboto")
+        gbox.setStyleSheet("font: 13pt Calibri")
         gbox.setLayout(vbox)
 
         self.pdfWrapper = WebView()
@@ -260,10 +260,10 @@ class MainWindow(QMainWindow):
         self.thread_my.setTranslateText(self.translate_ori.toPlainText())
 
     def updateOriTextSizeByIndexChanged(self, index):
-        self.translate_ori.setStyleSheet("font: {0}pt Roboto".format(self.selectable_text_size[index]))
+        self.translate_ori.setStyleSheet("font: {0}pt Calibri".format(self.selectable_text_size[index]))
 
     def updateResTextSizeByIndexChanged(self, index):
-        self.translate_res.setStyleSheet("font: {0}pt Roboto".format(self.selectable_text_size[index]))
+        self.translate_res.setStyleSheet("font: {0}pt Calibri".format(self.selectable_text_size[index]))
 
     def closeEvent(self, event):
         self.thread_my.expired()
